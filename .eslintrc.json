@@ -1,0 +1,12 @@
+{
+    "plugins": ["jest"],
+    "extends": ["plugin:github/recommended"],
+    "env": {
+      "node": true,
+      "es6": true,
+      "jest/globals": true
+    },
+    "rules": {
+      "i18n-text/no-en": "off"
+    }
+  }
