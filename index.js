@@ -17,8 +17,8 @@ catch (e) {
 const tabString = core.getInput('lines_total_template')
 const badgeString = core.getInput('lines_badge_template')
 
-const baseTemplateTable = (tabstring & tabString !== '') ? tabString : fs.readFileSync(path.join(__dirname, 'templates', 'tab.md'), {encoding:'utf-8'});
-const baseTemplateBadge = (badgeString & badgeString !== '') ? badgeString : fs.readFileSync(path.join(__dirname, 'templates', 'badge.md'), {encoding:'utf-8'});
+const baseTemplateTable = (tabString && tabString !== '') ? tabString : fs.readFileSync(path.join(__dirname, 'templates', 'tab.md'), {encoding:'utf-8'});
+const baseTemplateBadge = (badgeString && badgeString !== '') ? badgeString : fs.readFileSync(path.join(__dirname, 'templates', 'badge.md'), {encoding:'utf-8'});
 
 const templateTable = Handlebars.compile(baseTemplateTable);
 const templateBadge = Handlebars.compile(baseTemplateBadge);
@@ -47,7 +47,7 @@ try {
         let color = "red";
         if (pct >= warningThreshold) { color = "yellow" }
         if (pct >= goodThreshold) { color = "brightgreen" }
-        if (failIf & pct < goodThreshold) core.setFailed(`The coverage (of ${pct}%) does not reach the minimum acceptable level of ${goodThreshold}%`);
+        if (failIf && pct < goodThreshold) core.setFailed(`The coverage (of ${pct}%) does not reach the minimum acceptable level of ${goodThreshold}%`);
         core.setOutput("lines",  templateTable({total, covered, skipped, pct, color }));
         core.setOutput("lines_badge", templateBadge({total, covered, skipped, pct, color }));
     }
