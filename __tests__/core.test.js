@@ -4,6 +4,8 @@ const cp = require('child_process')
 
 jest.setTimeout(180000)
 
+console.log("AAAAAAAAAAAAAAAAAA", __dirname);
+
 test('Test core errors', () => {
   const options = {
     env: process.env

@@ -16,4 +16,5 @@ jobs:
       - name: Run test
         run: |
           pwd
+          ls -lathr
           yarn test
