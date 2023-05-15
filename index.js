@@ -14,9 +14,11 @@ catch (e) {
     else throw e;
 }
 
+const tabString = core.getInput('lines_total_template')
+const badgeString = core.getInput('lines_badge_template')
 
-const baseTemplateTable = core.getInput('lines_total_template') || fs.readFileSync(path.join(__dirname, 'templates', 'tab.md'), {encoding:'utf-8'});
-const baseTemplateBadge = core.getInput('lines_badge_template') || fs.readFileSync(path.join(__dirname, 'templates', 'badge.md'), {encoding:'utf-8'});
+const baseTemplateTable = (tabstring & tabString !== '') ? tabString : fs.readFileSync(path.join(__dirname, 'templates', 'tab.md'), {encoding:'utf-8'});
+const baseTemplateBadge = (badgeString & badgeString !== '') ? badgeString : fs.readFileSync(path.join(__dirname, 'templates', 'badge.md'), {encoding:'utf-8'});
 
 const templateTable = Handlebars.compile(baseTemplateTable);
 const templateBadge = Handlebars.compile(baseTemplateBadge);
