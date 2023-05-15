@@ -17,4 +17,5 @@ jobs:
         run: |
           pwd
           ls -lathr
+          node index.js
           yarn test
