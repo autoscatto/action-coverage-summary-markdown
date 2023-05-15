@@ -1,0 +1,38 @@
+name: Test and release project on v* tag
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  # Label of the container job
+  release-on-tag:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: node:18-alpine
+    steps:
+      # Project checkout
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --link-duplicates
+
+      - name: Run test
+        run: "yarn test"
+
+      - name: Coverage Summary Markdown
+        uses: autoscatto/action-coverage-summary-markdown@v1
+        id: coverage_summary_markdown
+        with:
+          summary_file: 'coverage-summary.json'
+          warning_threshold: 65
+          good_threshold: 90
+          fail_if: true        
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          body: |
+            ${{steps.coverage_summary_markdown.outputs.lines}}
+            
+            ${{steps.coverage_summary_markdown.outputs.lines_badge}}
