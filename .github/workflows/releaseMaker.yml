@@ -17,7 +17,7 @@ jobs:
         run: yarn install --frozen-lockfile --link-duplicates
 
       - name: Run test
-        run: "yarn test"
+        run: "yarn all"
         env:
           CI_TEST: true
 
