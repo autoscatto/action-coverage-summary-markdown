@@ -1,7 +1,6 @@
 const path = require('path')
 const process = require('process')
 const cp = require('child_process')
-const fs = require('fs')
 
 jest.setTimeout(180000)
 
@@ -35,7 +34,6 @@ test('Test core errors', () => {
   }
 })
 
-
 test('Test core minimal functionality', () => {
   process.env['GITHUB_WORKSPACE'] = '.'
   process.env['INPUT_SUMMARY_FILE'] = path.join(__dirname, 'coverage-summary.json')
@@ -43,12 +41,7 @@ test('Test core minimal functionality', () => {
   const options = {
     env: process.env
   }
-  try {
-    cp.execSync(`node ${ip}`, options).toString()
-  }
-  catch (e) {
-    console.log('kkkkkkkkkkkkkk', e.stdout.toString())
-  }
+  cp.execSync(`node ${ip}`, options).toString()
   const result = cp.execSync(`node ${ip}`, options).toString()
   for (const value of ['lines::', 47, 37, 0, 78.72]) {
     expect(result).toContain(String(value))

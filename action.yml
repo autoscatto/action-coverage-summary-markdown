@@ -20,11 +20,11 @@ inputs:
   lines_total_template:
     description: 'Handlebars template for lines total (usable variables: total, covered, skipped, pct, color)'
     required: false
-    default: ''
+    default:
   lines_badge_template:
     description: 'Handlebars template for lines total badge (usable variables: total, covered, skipped, pct, color)'
     required: false
-    default: ''                       
+    default:                       
 outputs:
   lines: # id of output
     description: 'Lines report table'
