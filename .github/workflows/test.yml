@@ -1,0 +1,17 @@
+name: Test and release project on v* tag
+on: workflow_dispatch
+jobs:
+  # Label of the container job
+  release-on-tag:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: node:18-alpine
+    steps:
+      # Project checkout
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --link-duplicates
+
+      - name: Run test
+        run: "yarn test"
