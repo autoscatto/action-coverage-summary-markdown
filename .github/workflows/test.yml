@@ -17,5 +17,5 @@ jobs:
         run: |
           pwd
           ls -lathr
-          node index.js
+          INPUT_SUMMARY_FILE=__tests__/coverage-summary.json node index.js
           yarn test
