@@ -44,6 +44,10 @@ test('Test core minimal functionality', () => {
   options.env['INPUT_SUMMARY_FILE'] = path.join(__dirname, 'coverage-summary.json')
   const ip = path.join(__dirname, '..', 'index.js')
   cp.execSync(`node ${ip}`, options).toString()
+  try {cp.execSync(`node ${ip}`, options).toString()}
+  catch (e) {
+    console.log("BBBBBBBBBBBBB", e.stderr.toString(), e.stdout.toString())
+  }
   const result = cp.execSync(`node ${ip}`, options).toString()
   for (const value of ['lines::', 47, 37, 0, 78.72]) {
     expect(result).toContain(String(value))
