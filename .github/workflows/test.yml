@@ -1,8 +1,8 @@
-name: Test and release project on v* tag
+name: Test manual
 on: workflow_dispatch
 jobs:
   # Label of the container job
-  release-on-tag:
+  test-manual:
     # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
     # Docker Hub image that `container-job` executes in
@@ -14,4 +14,8 @@ jobs:
         run: yarn install --frozen-lockfile --link-duplicates
 
       - name: Run test
-        run: "yarn test"
+        run: |
+          pwd
+          ls -lathr
+          INPUT_SUMMARY_FILE=__tests__/coverage-summary.json node index.js
+          yarn test
