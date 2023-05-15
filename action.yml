@@ -1,0 +1,35 @@
+name: 'Coverage Summary Markdown'
+description: 'Generate Markdown outputs from coverage-summary.json'
+inputs:
+  summary_file:  # id of input
+    description: 'Coverage summary JSON file'
+    required: true
+    default: ''
+  warning_threshold:
+    description: 'Minimum coverage required for a warning status'
+    required: false
+    default: 65
+  good_threshold:
+    description: 'Minimum coverage required for a good status'
+    required: false
+    default: 90
+  fail_if:
+    description: 'Step will fail if coverage is less than good_threshold'
+    required: false
+    default: false
+  lines_total_template:
+    description: 'Handlebars template for lines total (usable variables: total, covered, skipped, pct, color)'
+    required: false
+    default: ''
+  lines_badge_template:
+    description: 'Handlebars template for lines total badge (usable variables: total, covered, skipped, pct, color)'
+    required: false
+    default: ''                       
+outputs:
+  lines: # id of output
+    description: 'Lines report table'
+  lines_badge:
+    description: 'Lines percentage badge'
+runs:
+  using: 'node16'
+  main: 'index.js'
