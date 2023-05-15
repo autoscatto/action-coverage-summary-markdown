@@ -1,6 +1,6 @@
 {
   "name": "action-coverage-summary-markdown",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "GitHub action to generate markdown outputs from coverage-summary.json",
   "main": "index.js",
   "repository": "git@github.com:autoscatto/action-coverage-summary-markdown.git",
