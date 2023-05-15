@@ -20,7 +20,7 @@ jobs:
         run: "yarn test"
 
       - name: Coverage Summary Markdown
-        uses: autoscatto/action-coverage-summary-markdown@v1.0.0
+        uses: autoscatto/action-coverage-summary-markdown@v1.0.5
         id: coverage_summary_markdown
         with:
           summary_file: 'coverage-summary.json'
