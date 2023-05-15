@@ -1,4 +1,6 @@
 name: Test and release project on v* tag
+permissions:
+  contents: write
 on:
   push:
     tags:
