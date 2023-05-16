@@ -2,34 +2,12 @@
 
 This action generates markdown outputs from a `coverage-summary.json` file that summarizes the code test coverage.
 
-## Inputs
-
-### `summary-file`
-
-**Required** The path of the coverage summary JSON file.
-
-### `warning-threshold`
-
-Optional. The minimum coverage required to get a warning status. Default is 65.
-
-### `good-threshold`
-
-Optional. The minimum coverage required to get a good status. Default is 90.
-
-## Outputs
-
-### `lines`
-
-The lines report table.# Coverage Summary Markdown
-
-This GitHub Action generates Markdown outputs from `coverage-summary.json` to display coverage reports in a more readable and visually appealing format.
-
 ## Features
 
-- Generate a lines report table
-- Create a lines percentage badge
+- Generate a summary report table
+- Create a percentage badge
 - Set minimum coverage thresholds for warning and good status
-- Define custom Handlebars templates for lines total and badge
+- Define custom Handlebars templates for table and badge
 
 ## Inputs
 
